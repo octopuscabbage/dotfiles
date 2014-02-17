@@ -31,8 +31,6 @@ syntax on
 
 nmap <F8> :TagbarToggle<CR>
 
-TagbarToggle
-
 " map each number to its shift-key character
 inoremap 1 !
 inoremap 2 @
@@ -69,3 +67,19 @@ inoremap _ -
 " seem to happen.
 autocmd QuickFixCmdPost [^l]* nested cwindow
 autocmd QuickFixCmdPost    l* nested lwindow
+
+
+" Gif config
+
+" Require tpope/vim-repeat to enable dot repeat support
+" Jump to anywhere with only `s{char}{target}`
+" `s<CR>` repeat last find motion.
+nmap s <Plug>(easymotion-s)
+" Bidirectional & within line 't' motion
+omap t <Plug>(easymotion-bd-tl)
+" Use uppercase target labels and type as a lower case
+let g:EasyMotion_use_upper = 1
+ " type `l` and match `l`&`L`
+let g:EasyMotion_smartcase = 1
+" Smartsign (type `3` and match `3`&`#`)
+let g:EasyMotion_use_smartsign_us = 1
