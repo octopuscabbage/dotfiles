@@ -31,6 +31,8 @@ syntax on
 
 nmap <F8> :TagbarToggle<CR>
 
+TagbarToggle
+
 " map each number to its shift-key character
 inoremap 1 !
 inoremap 2 @
