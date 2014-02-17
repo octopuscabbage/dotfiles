@@ -57,9 +57,6 @@ inoremap ) 0
 inoremap _ -
 
 
-" Small pesonal stuff
-set number
-
 " Automatically open, but do not go to (if there are errors) the quickfix /
 " location list window, or close it when is has become empty.
 "
