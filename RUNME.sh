@@ -1,8 +1,13 @@
 echo "Linking vmrc..."
-ln -s ~/.vimrc .vimrc
-echo "Linking .vim..."
-ln -s ~/.vim .vim
-echo "Linking .viminfo..."
-ln -s ~/viminfo .viminfo
+rm -f ~/.vimrc
+cp .vimrc ~/.vimrc
 
-echo "Complet if no errors"
+echo "Linking .vim..."
+rm -rf ~/.vim
+cp -r .vim ~/.vim
+
+echo "Linking .viminfo..."
+rm -f ~/.viminfo
+cp .viminfo ~/.viminfo
+
+echo "Complete if no errors"
