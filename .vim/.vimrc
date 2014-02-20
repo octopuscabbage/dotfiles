@@ -64,8 +64,3 @@ let g:EasyMotion_use_smartsign_us = 1
 syntax enable
 set background=dark
 colorscheme solarized
-
-
-"GUNDO
-
-nnoremap U :GundoToggle<CR>
