@@ -1,6 +1,3 @@
-echo "Downloading exuberant-ctags..."
-sudo apt-get install exuberant-ctags || {echo "Run this script as sudo!"}
-
 echo "Linking vmrc..."
 rm -f ~/.vimrc
 cp .vimrc ~/.vimrc

@@ -67,5 +67,7 @@ colorscheme solarized
 
 
 "GUNDO
-
 nnoremap U :GundoToggle<CR>
+
+
+map Debug: !nemiver<CR>
