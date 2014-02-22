@@ -62,8 +62,11 @@ let g:EasyMotion_use_smartsign_us = 1
 "COLOR THEME
 
 syntax enable
-set background=dark
-colorscheme solarized
+if has('gui_running')
+	set background=dark
+	colorscheme solarized
+
+endif
 
 
 "GUNDO
