@@ -74,3 +74,10 @@ nnoremap U :GundoToggle<CR>
 
 
 map Debug: !nemiver<CR>
+"Haskell stuff
+let g:haddock_browser="/usr/bin/firefox"
+let g:haddock_docdir="/usr/local/share/doc/ghc/html/"
+
+command Hmake execute "!ghc --make  %"
+
+
