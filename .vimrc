@@ -80,4 +80,6 @@ let g:haddock_docdir="/usr/local/share/doc/ghc/html/"
 
 command Hmake execute "!ghc --make  %"
 
-
+"Arduino stuff
+u BufRead,BufNewFile *.pde set filetype=arduino
+au BufRead,BufNewFile *.ino set filetype=arduino
