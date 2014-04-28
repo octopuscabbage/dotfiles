@@ -1,1 +1,0 @@
-/home/octopuscabbage_/.vim

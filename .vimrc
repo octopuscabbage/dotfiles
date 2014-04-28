@@ -1,85 +1,48 @@
-set nocompatible
+set nocompatible              " be iMproved, required
+filetype off                  " required
 
-" Pathogen
-call pathogen#infect()
-call pathogen#helptags()
- 
-set statusline=%<\ %n:%f\ %m%r%y%=%-35.(line:\ %l\ of\ %L,\ col:\ %c%V\ (%P)%)
-filetype plugin indent on
- 
-" Nerdtree
-autocmd VimEnter * NERDTree
-autocmd VimEnter * wincmd p
-let NERDTreeShowBookmarks=1
-let NERDTreeChDirMode=0
-let NERDTreeQuitOnOpen=0
-let NERDTreeMouseMode=2
-let NERDTreeShowHidden=1
-let NERDTreeIgnore=['\.pyc','\~$','\.swo$','\.swp$','\.git','\.hg','\.svn','\.bzr']
-let NERDTreeKeepTreeInNewTab=1
-let g:nerdtree_tabs_open_on_gui_startup=0
- 
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
 
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
 
-" Videm
-set nocp 
-filetype plugin on 
-syntax on 
+""Plugins
+
+Plugin 'kien/ctrlp.vim'
+Plugin 'bling/vim-airline'
+"Easy tags
+Plugin 'xolox/vim-easytags'
+Plugin 'xolox/vim-misc.git'
+Plugin 'tpope/vim-fugitive.git'
+Plugin 'sjl/gundo.vim.git'
+Plugin 'scrooloose/syntastic.git'
+Plugin 'techlivezheng/vim-plugin-minibufexpl.git'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'ervandew/supertab'
 
 
-" Tagbar
-
-nmap <F8> :TagbarToggle<CR>
-
-
-" Automatically open, but do not go to (if there are errors) the quickfix /
-" location list window, or close it when is has become empty.
-"
-" Note: Must allow nesting of autocmds to enable any customizations for quickfix
-" buffers.
-" Note: Normally, :cwindow jumps to the quickfix window if the command opens it
-" (but not if it's already open). However, as part of the autocmd, this doesn't
-" seem to happen.
-autocmd QuickFixCmdPost [^l]* nested cwindow
-autocmd QuickFixCmdPost    l* nested lwindow
+""All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" " To ignore plugin indent changes, instead use:
+" "
+" " Brief help
+" " :PluginList          - list configured plugins
+" " :PluginInstall(!)    - install (update) plugins
+" " :PluginSearch(!) foo - search (or refresh cache first) for foo
+" " :PluginClean(!)      - confirm (or auto-approve) removal of unused plugins
+" "
+" " see :h vundle for more details or wiki for FAQ
+" " Put your non-Plugin stuff after this line
 
 
-" Require tpope/vim-repeat to enable dot repeat support
-" Jump to anywhere with only `s{char}{target}`
-" `s<CR>` repeat last find motion.
-nmap s <Plug>(easymotion-s)
-" Bidirectional & within line 't' motion
-omap t <Plug>(easymotion-bd-tl)
-" Use uppercase target labels and type as a lower case
-let g:EasyMotion_use_upper = 1
- " type `l` and match `l`&`L`
-let g:EasyMotion_smartcase = 1
-" Smartsign (type `3` and match `3`&`#`)
-let g:EasyMotion_use_smartsign_us = 1
+""Custom mappings
 
-
-
-"COLOR THEME
-
-syntax enable
-if has('gui_running')
-	set background=dark
-	colorscheme solarized
-
-endif
-
-
-"GUNDO
 nnoremap U :GundoToggle<CR>
+map <Leader> <Plug>(easymotion-prefix)
 
-
-map Debug: !nemiver<CR>
-"Haskell stuff
-let g:haddock_browser="/usr/bin/firefox"
-let g:haddock_docdir="/usr/local/share/doc/ghc/html/"
-
-command Hmake execute "!ghc --make  %"
-
-"Arduino stuff
-u BufRead,BufNewFile *.pde set filetype=arduino
-au BufRead,BufNewFile *.ino set filetype=arduino
+colorscheme desert
