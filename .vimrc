@@ -17,13 +17,15 @@ Plugin 'bling/vim-airline'
 "Easy tags
 Plugin 'xolox/vim-easytags'
 Plugin 'xolox/vim-misc.git'
+Plugin 'xolox/vim-notes'
 Plugin 'tpope/vim-fugitive.git'
 Plugin 'sjl/gundo.vim.git'
 Plugin 'scrooloose/syntastic.git'
 Plugin 'techlivezheng/vim-plugin-minibufexpl.git'
+"Plugin 'bling/vim-bufferline'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'ervandew/supertab'
-
+Plugin 'vim-scripts/a.vim' " Use :A to switch between header and cpp :AS splits and switches
 
 ""All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -39,10 +41,37 @@ filetype plugin indent on    " required
 " " see :h vundle for more details or wiki for FAQ
 " " Put your non-Plugin stuff after this line
 
-
-""Custom mappings
-
-nnoremap U :GundoToggle<CR>
-map <Leader> <Plug>(easymotion-prefix)
-
 colorscheme desert
+
+
+"Custom mappings
+
+nnoremap U :GundoToggle<CR> 
+
+""Fixes supertab 
+let g:SuperTabDefaultCompletionType = "context"
+
+
+""Opens quick fix window on make 
+autocmd QuickFixCmdPost [^l]* nested cwindow 
+autocmd QuickFixCmdPost l* nested lwindow
+
+""Remotes the toolbar in gvim 
+set guioptions-=T "remove toolbar
+
+
+f config
+
+" Require tpope/vim-repeat to enable dot repeat support
+" Jump to anywhere with only `s{char}{target}`
+" `s<CR>` repeat last find motion.
+nmap s <Plug>(easymotion-s)
+" Bidirectional & within line 't' motion
+omap t <Plug>(easymotion-bd-tl)
+" Use uppercase target labels and type as a lower case
+let g:EasyMotion_use_upper = 1
+ " type `l` and match `l`&`L`
+let g:EasyMotion_smartcase = 1
+" Smartsign (type `3` and match `3`&`#`)
+let g:EasyMotion_use_smartsign_us = 1
+
