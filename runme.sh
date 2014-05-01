@@ -10,4 +10,8 @@ echo "Linking .viminfo..."
 rm -f ~/.viminfo
 cp .viminfo ~/.viminfo
 
+
+echo "Installing plugins..."
+vim +PluginInstall +qall
+
 echo "Complete if no errors"
