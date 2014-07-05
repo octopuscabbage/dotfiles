@@ -29,6 +29,8 @@ Plugin 'vim-scripts/a.vim' " Use :A to switch between header and cpp :AS splits 
 Plugin 'ehamberg/vim-cute-python' " Python mathematical symbols
 Plugin 'tclem/vim-arduino' " Arduino
 Bundle 'derekwyatt/vim-scala' 
+Plugin 'lukerandall/haskellmode-vim'
+Plugin 'Twinside/vim-haskellConceal'
 
 ""All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -77,9 +79,11 @@ let g:EasyMotion_smartcase = 1
 " Smartsign (type `3` and match `3`&`#`)
 let g:EasyMotion_use_smartsign_us = 1
 
-set foldmethod=indent
+set foldmethod=syntax
 
 
 au BufRead,BufNewFile *.pde set filetype=arduino
 au BufRead,BufNewFile *.ino set filetype=arduino
 
+let g:haddock_browser="/usr/bin/firefox"
+au BufEnter *.hs compiler ghc
