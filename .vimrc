@@ -31,6 +31,7 @@ Plugin 'tclem/vim-arduino' " Arduino
 Bundle 'derekwyatt/vim-scala' 
 Plugin 'lukerandall/haskellmode-vim'
 Plugin 'Twinside/vim-haskellConceal'
+Plugin 'scrooloose/nerdtree'
 
 ""All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -79,10 +80,7 @@ let g:EasyMotion_smartcase = 1
 " Smartsign (type `3` and match `3`&`#`)
 let g:EasyMotion_use_smartsign_us = 1
 
-<<<<<<< HEAD
 set foldmethod=syntax
-=======
->>>>>>> 742a9c56244c4e4f62be66400e137492afa2a4b3
 
 
 au BufRead,BufNewFile *.pde set filetype=arduino
