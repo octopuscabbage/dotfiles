@@ -29,11 +29,13 @@ Plugin 'vim-scripts/a.vim' " Use :A to switch between header and cpp :AS splits 
 Plugin 'ehamberg/vim-cute-python' " Python mathematical symbols
 Plugin 'tclem/vim-arduino' " Arduino
 Bundle 'derekwyatt/vim-scala' 
+<<<<<<< HEAD
 Bundle 'christoomey/vim-tmux-navigator'
+=======
 Plugin 'lukerandall/haskellmode-vim'
 Plugin 'Twinside/vim-haskellConceal'
 Plugin 'scrooloose/nerdtree'
-Bundle "mattn/emmet-vim"
+>>>>>>> 7a9fbc5cf1f403d6cca475713ea2813b091ef8e7
 
 ""All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -90,11 +92,3 @@ au BufRead,BufNewFile *.ino set filetype=arduino
 
 let g:haddock_browser="/usr/bin/firefox"
 au BufEnter *.hs compiler ghc
-
-
-let g:user_emmet_install_global = 0
-autocmd FileType html,css EmmetInstall
-
-
-command Todo noautocmd vimgrep /TODO\|FIXME/j ** | cw
-noremap t Todo
