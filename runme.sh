@@ -1,14 +1,21 @@
-echo "Linking vmrc..."
+echo "Copying vmrc..."
 rm -f ~/.vimrc
 cp .vimrc ~/.vimrc
 
-echo "Linking .vim..."
+echo "Copying .vim..."
 rm -rf ~/.vim
 cp -r .vim ~/.vim
 
-echo "Linking .viminfo..."
+echo "Copying .viminfo..."
 rm -f ~/.viminfo
 cp .viminfo ~/.viminfo
+
+echo "Installing tmux"
+sudo apt-get install tmux
+
+echo "Copying tmux conf..."
+rm -rf ~/.tmux.conf
+cp .tmux.conf ~/.tmux.conf
 
 
 echo "Installing plugins..."

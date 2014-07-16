@@ -96,5 +96,4 @@ let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
 
 
-command Todo noautocmd vimgrep /TODO\|FIXME/j ** | cw
-noremap t Todo
+noremap tt noautocmd vimgrep /TODO\|FIXME/j ** | cw
