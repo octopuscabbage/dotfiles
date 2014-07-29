@@ -10,13 +10,9 @@ echo "Copying .viminfo..."
 rm -f ~/.viminfo
 cp .viminfo ~/.viminfo
 
-echo "Installing tmux"
-sudo apt-get install tmux
-
-echo "Copying tmux conf..."
-rm -rf ~/.tmux.conf
-cp .tmux.conf ~/.tmux.conf
-
+echo "Copying xmonad.hs..."
+rm -f ~/.xmonad/xmonad.hs
+cp xmonad.hs ~/.xmonad/xmonad.hs
 
 echo "Installing plugins..."
 vim +PluginInstall +qall
