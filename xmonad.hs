@@ -33,6 +33,7 @@ import qualified Data.Map        as M
 import Data.List
 import Data.Function
 
+main ::  IO ()
 main = xmonad xfceConfig{
 		terminal = "xfce4-terminal"
 		,modMask = mod4Mask
@@ -43,13 +44,19 @@ main = xmonad xfceConfig{
 
 
 --Colors
+myFocusedBorderColor ::  [Char]
 myFocusedBorderColor = "#1E1E1E"
+myUncfocusedBorderColor ::  a
 myUncfocusedBorderColor = undefined
 
 
+leader ::  (KeyMask, KeySym)
+leader = (controlMask, xK_a)
+
 --Keys
+myKeys ::  XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
 myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $ 
-	[((controlMask, xK_a ), submap . M.fromList $ 
+	[(leader, submap . M.fromList $ 
 			[((0, 		xK_Return), 	spawn $ XMonad.terminal conf)
 			,((0, 		xK_c) , 	kill)
 			,((0, 		xK_space), 	sendMessage NextLayout)
@@ -103,3 +110,20 @@ myLayout = avoidStruts $
 	-- Percent of screen to increment by when resizing panes
 	delta   = 2/100
 	--                                                              
+	--
+--Mouse
+{--
+myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
+	[(leader, submap . M.fromList $ 
+		
+ 
+        	[ ((0, button1), (\w -> focus w >> mouseMoveWindow w))
+    --      
+        	, ((0, button3), (\w -> focus w >> windows W.swapMaster))
+    --               
+        	, ((0, button2), (\w -> focus w >> mouseResizeWindow w))
+		]
+	)]
+    --                        
+        
+--}
