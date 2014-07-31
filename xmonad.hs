@@ -33,6 +33,8 @@ import qualified Data.Map        as M
 import Data.List
 import Data.Function
 
+import System.Process
+
 main ::  IO ()
 main = xmonad xfceConfig{
 		terminal = "xfce4-terminal"
@@ -53,9 +55,21 @@ myUncfocusedBorderColor = undefined
 leader ::  (KeyMask, KeySym)
 leader = (controlMask, xK_a)
 
+--Music
+spotifyLeader = (controlMask, xK_w)
+spotifyPrefix = "dbus-send --print-reply --dest=com.spotify.qt /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player."
+
+runSpotifyCommand ::  MonadIO m => String -> m ()
+runSpotifyCommand a = spawn $ spotifyPrefix ++ a
+
+spotifyNext = runSpotifyCommand "Next"
+spotifyPlayPause = runSpotifyCommand "PlayPause"
+spotifyPrev = runSpotifyCommand "Previous"
+
 --Keys
 myKeys ::  XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
 myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $ 
+	--Regular keys
 	[(leader, submap . M.fromList $ 
 			[((0, 		xK_Return), 	spawn $ XMonad.terminal conf)
 			,((0, 		xK_c) , 	kill)
@@ -86,6 +100,13 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
         			, (f, mask) <- [(viewScreen, 0), (sendToScreen, shiftMask)]]
 			
 	 )]
+	++
+	--Music Keys
+	[(spotifyLeader, submap . M.fromList $
+			[((0, 		xK_w), 	spotifyPlayPause)
+			,((0, 		xK_e), 	spotifyNext)
+			,((0, 		xK_q), 	spotifyPrev)]
+	)]
 
 	--Layout
 myLayout = avoidStruts $
