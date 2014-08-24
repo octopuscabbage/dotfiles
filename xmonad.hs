@@ -42,6 +42,7 @@ main = xmonad xfceConfig{
 		,focusedBorderColor = myFocusedBorderColor
 		,keys = myKeys
 		,layoutHook = myLayout
+		,mouseBindings = myMouseBindings
 }
 
 
@@ -56,7 +57,7 @@ leader ::  (KeyMask, KeySym)
 leader = (controlMask, xK_a)
 
 --Music
-spotifyLeader = (controlMask, xK_w)
+spotifyLeader = (controlMask, xK_e)
 spotifyPrefix = "dbus-send --print-reply --dest=com.spotify.qt /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player."
 
 runSpotifyCommand ::  MonadIO m => String -> m ()
@@ -89,6 +90,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 			,((0, 		xK_period), 	sendMessage (IncMasterN (-1)))
 			,((0, 		xK_b), 		sendMessage ToggleStruts)
 			,((shiftMask, 	xK_q), 		broadcastMessage ReleaseResources >> restart "xmonad" True)
+			,((0,		xK_t), 		withFocused $ windows . W.sink)
 			,((0, 		xK_p), 		spawn $ "xfce4-appfinder")] 
 			++
 			[((m .|. 0, k), windows $ f i)
@@ -132,19 +134,14 @@ myLayout = avoidStruts $
 	delta   = 2/100
 	--                                                              
 	--
---Mouse
-{--
 myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
-	[(leader, submap . M.fromList $ 
 		
  
-        	[ ((0, button1), (\w -> focus w >> mouseMoveWindow w))
+        	[ ((modMask, button1), (\w -> focus w >> mouseMoveWindow w))
     --      
-        	, ((0, button3), (\w -> focus w >> windows W.swapMaster))
+        	, ((modMask, button3), (\w -> focus w >> windows W.swapMaster))
     --               
-        	, ((0, button2), (\w -> focus w >> mouseResizeWindow w))
+        	, ((modMask, button2), (\w -> focus w >> mouseResizeWindow w))
 		]
-	)]
     --                        
         
---}
