@@ -36,6 +36,7 @@ Plugin 'scrooloose/nerdtree'
 Bundle "mattn/emmet-vim"
 "Plugin 'davidhalter/jedi-vim'
 Plugin 'Shougo/neocomplcache.vim'
+Plugin 'johnsyweb/vim-makeshift'
 
 ""All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -84,7 +85,6 @@ let g:EasyMotion_smartcase = 1
 " Smartsign (type `3` and match `3`&`#`)
 let g:EasyMotion_use_smartsign_us = 1
 
-set foldmethod=syntax
 
 
 au BufRead,BufNewFile *.pde set filetype=arduino
