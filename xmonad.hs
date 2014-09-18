@@ -36,15 +36,18 @@ import Data.Function
 import System.Process
 
 main ::  IO ()
-main = xmonad xfceConfig{
+main = 	xmonad xfceConfig{
 		terminal = "xfce4-terminal"
 		,modMask = mod4Mask
 		,focusedBorderColor = myFocusedBorderColor
 		,keys = myKeys
 		,layoutHook = myLayout
 		,mouseBindings = myMouseBindings
-}
+		,startupHook = startup
+	}
 
+startup ::  X ()
+startup = spawn "xfce4-panel -r"
 
 --Colors
 myFocusedBorderColor ::  [Char]
