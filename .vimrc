@@ -37,6 +37,7 @@ Bundle "mattn/emmet-vim"
 "Plugin 'davidhalter/jedi-vim'
 Plugin 'Shougo/neocomplcache.vim'
 Plugin 'johnsyweb/vim-makeshift'
+Plugin 'jaxbot/semantic-highlight.vim'
 
 ""All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -182,3 +183,9 @@ endif
 let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 let g:neocomplcache_omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
 let g:neocomplcache_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+
+
+" Semantic Highlighting
+let s:semanticTermColors = [181,108,223,245,66,236,216,109,115,249,238,248,15,116,230,180,7]
+nnoremap <C-S> :SemanticHighlightToggle<cr>
+autocmd BufEnter * :SemanticHighlight
