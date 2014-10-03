@@ -186,6 +186,7 @@ let g:neocomplcache_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 
 
 " Semantic Highlighting
-let s:semanticTermColors = [181,108,223,245,66,236,216,109,115,249,238,248,15,116,230,180,7]
-nnoremap <C-S> :SemanticHighlightToggle<cr>
+let g:semanticTermColors = [2,3,5,6,7,9,10,34,13,14,15,19,202,172]
+nnoremap <c-s> :SemanticHighlightToggle<cr>
+autocmd TextChanged * : SemanticHighlight
 autocmd BufEnter * :SemanticHighlight
