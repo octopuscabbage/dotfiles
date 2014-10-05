@@ -37,7 +37,9 @@ Bundle "mattn/emmet-vim"
 "Plugin 'davidhalter/jedi-vim'
 Plugin 'Shougo/neocomplcache.vim'
 Plugin 'johnsyweb/vim-makeshift'
-Plugin 'jaxbot/semantic-highlight.vim'
+"Plugin 'jaxbot/semantic-highlight.vim'
+Plugin 'octopuscabbage/semantic-highlight.vim'
+
 
 ""All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -190,3 +192,5 @@ let g:semanticTermColors = [2,3,5,6,7,9,10,34,13,14,15,19,202,172]
 nnoremap <c-s> :SemanticHighlightToggle<cr>
 autocmd TextChanged * : SemanticHighlight
 autocmd BufEnter * :SemanticHighlight
+
+let g:blacklist = ['where', 'if', 'let', 'in', 'return', 'def','do','then','let','instance','deriving','else']
