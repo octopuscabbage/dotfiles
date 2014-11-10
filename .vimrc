@@ -39,6 +39,8 @@ Plugin 'Shougo/neocomplcache.vim'
 Plugin 'johnsyweb/vim-makeshift'
 "Plugin 'jaxbot/semantic-highlight.vim'
 Plugin 'octopuscabbage/semantic-highlight.vim'
+Plugin 'derekwyatt/vim-protodef'
+Plugin 'derekwyatt/vim-fswitch'
 
 
 ""All of your Plugins must be added before the following line
