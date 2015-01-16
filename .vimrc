@@ -196,3 +196,11 @@ autocmd TextChanged * : SemanticHighlight
 autocmd BufEnter * :SemanticHighlight
 
 let g:blacklist = ['where', 'if', 'let', 'in', 'return', 'def','do','then','let','instance','deriving','else']
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+" Reload
+map <silent> tu :call GHC_BrowseAll()<CR>
+" Type Lookup
+map <silent> tw :call GHC_ShowType(1)<CR>
