@@ -38,9 +38,15 @@ Bundle "mattn/emmet-vim"
 Plugin 'Shougo/neocomplcache.vim'
 Plugin 'johnsyweb/vim-makeshift'
 "Plugin 'jaxbot/semantic-highlight.vim'
-Plugin 'octopuscabbage/semantic-highlight.vim'
+"Plugin 'octopuscabbage/semantic-highlight.vim'
 Plugin 'derekwyatt/vim-protodef'
 Plugin 'derekwyatt/vim-fswitch'
+Plugin 'octopuscabbage/vim-monochrome.git'
+Plugin 'Valloric/MatchTagAlways'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'tpope/vim-salve'
+Plugin 'tpope/vim-surround'
 
 
 ""All of your Plugins must be added before the following line
@@ -59,7 +65,7 @@ filetype plugin indent on    " required
 
 
 set t_Co=256
-colors zenburn
+colorscheme monochrome
 
 
 "Custom mappings
@@ -191,9 +197,8 @@ let g:neocomplcache_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 
 " Semantic Highlighting
 let g:semanticTermColors = [2,3,5,6,7,9,10,34,13,14,15,19,202,172]
-nnoremap <c-s> :SemanticHighlightToggle<cr>
-autocmd TextChanged * : SemanticHighlight
-autocmd BufEnter * :SemanticHighlight
+"nnoremap <c-s> :SemanticHighlightToggle<cr>
+" autocmd BufEnter * :SemanticHighlight
 
 let g:blacklist = ['where', 'if', 'let', 'in', 'return', 'def','do','then','let','instance','deriving','else']
 autocmd StdinReadPre * let s:std_in=1
@@ -244,3 +249,46 @@ if exists("+undofile")
   set undodir+=~/.vim/undo//
   set undofile
 endif
+
+syntax on
+
+" Make jsx and react work
+let g:syntastic_javascript_checkers = ['eslint']
+" Override eslint with local version where necessary.
+let local_eslint = finddir('node_modules', '.;') . '/.bin/eslint'
+if matchstr(local_eslint, "^\/\\w") == ''
+  let local_eslint = getcwd() . "/" . local_eslint
+endif
+if executable(local_eslint)
+  let g:syntastic_javascript_eslint_exec = local_eslint
+endif
+
+"Pick up json filetype
+au BufRead,BufNewFile *.json set filetype=json
+" Start airline automatically
+set laststatus=2
+
+
+" tabs to space
+set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
+
+let g:mta_filetypes = {
+    \ 'html' : 1,
+    \ 'xhtml' : 1,
+    \ 'xml' : 1,
+    \ 'jinja' : 1,
+    \ 'javascript': 1,
+    \}
+
+"Automatically use system clipboard
+set clipboard=unnamed
+
+set backspace=2 " make backspace work like most other apps
+
+" Auto eslinting
+autocmd BufRead *.js !eslint --fix --quiet % > /dev/null 2>&1
+
+
+" Keep visual mode after indent
+vnoremap > >gv
+vnoremap < <gv
