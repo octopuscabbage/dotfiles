@@ -292,5 +292,8 @@ autocmd BufRead *.js !eslint --fix --quiet % > /dev/null 2>&1
 
 " Keep visual mode after indent
 vnoremap > >gv
-vnoremap < <gv
+vnoremap < <gvo
 
+
+let g:airline#extensions#whitespace#enabled = 0 "Disable whitespace checking in airline
+set noerrorbells
