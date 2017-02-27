@@ -1,5 +1,4 @@
 set nocompatible              " be iMproved, required
-filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -48,6 +47,8 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'tpope/vim-salve'
 Plugin 'tpope/vim-surround'
+Plugin 'mtscout6/syntastic-local-eslint.vim'
+Plugin 'guns/vim-clojure-static'
 
 
 ""All of your Plugins must be added before the following line
@@ -271,7 +272,7 @@ set laststatus=2
 
 
 " tabs to space
-set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
+set tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
 
 let g:mta_filetypes = {
     \ 'html' : 1,
@@ -292,8 +293,15 @@ autocmd BufRead *.js !eslint --fix --quiet % > /dev/null 2>&1
 
 " Keep visual mode after indent
 vnoremap > >gv
-vnoremap < <gvo
+vnoremap < <gv
 
 
 let g:airline#extensions#whitespace#enabled = 0 "Disable whitespace checking in airline
 set noerrorbells
+
+let g:syntastic_always_populate_loc_list = 1 " Allow error jumping
+noremap <silent> ep :lprevious<CR>
+noremap <silent> ee :lnext<CR>
+
+syntax on
+filetype plugin indent on
